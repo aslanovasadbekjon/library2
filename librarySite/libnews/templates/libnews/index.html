@@ -54,19 +54,19 @@
 		
 		<div class="row">
 			
-			<div class="col-md-8" style="border: 3px solid red">
-				<div class="col-md-4">
+			<div class="col-md-4" style="border: 3px solid red">
+				<div class="col-md-12">
 					<div class="list-group">
 					    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
 					        Kitoblar kategoriyalari
 					    </a>
-					    {% for item in bolim %}
+					    {% for item in bolimlar %}
 					    <a href="bolim/{{ item.pk }}" class="list-group-item list-group-item-action">{{ item.title }}</a>
 					    {% endfor %}
 					</div>
 				</div>	
 			</div>
-			<div class="col-md-4" style="background-color: coral">
+			<div class="col-md-6" style="background-color: coral">
 				
 				{% for item in libnews %}
 
@@ -99,6 +99,9 @@
 				  </div>
 				</div> 
 				{% endfor %}
+			</div>
+			<div class="col-md-2">
+				Bu yerda eng ko`p o`qilgan kitoblar chiqadi.
 			</div>
 		</div>
 		
