@@ -1,5 +1,5 @@
 
-from django.http import HttpResponse
+
 from django.shortcuts import render
 
 from .models import Obyekt, Bolim
@@ -19,5 +19,4 @@ def get_bolim(request,bolim_id):
 	libnews = Obyekt.objects.filter(bolim_id=bolim_id)
 	bolimlar=Bolim.objects.all()
 	bolim = Bolim.objects.get(pk=bolim_id)
-	
 	return render(request,'libnews/bolim.html',{'libnews':libnews, 'bolimlar':bolimlar,'bolim':bolim})

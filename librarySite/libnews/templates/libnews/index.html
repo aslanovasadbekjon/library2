@@ -14,14 +14,14 @@
 	
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	  <div class="container-fluid">
-	    <a class="navbar-brand" href="#">Navbar</a>
+	    <a class="navbar-brand" href="{% url 'home' %}">Navbar</a>
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
 	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="#">Asosiy</a>
+	          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Asosiy</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="#">Yangi kitoblar</a>
@@ -57,22 +57,22 @@
 			<div class="col-md-4" style="border: 3px solid red">
 				<div class="col-md-12">
 					<div class="list-group">
-					    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+					    <a href="{% url 'home' %}" class="list-group-item list-group-item-action active" aria-current="true">
 					        Kitoblar kategoriyalari
 					    </a>
 					    {% for item in bolimlar %}
-					    <a href="bolim/{{ item.pk }}" class="list-group-item list-group-item-action">{{ item.title }}</a>
+					    <a href="{% url 'bolim' item.pk %}" class="list-group-item list-group-item-action">{{ item.title }}</a>
 					    {% endfor %}
 					</div>
 				</div>	
 			</div>
 			<div class="col-md-6" style="background-color: coral">
 				
-				{% for item in libnews %}
+				{% for item in libnews %} 
 
 				<div class="card mb-3">
 				  <div class="card-header" style="color: blue">
-				   Kategoriya: {{item.bolim}}
+				   Kategoriya: <a href="{% url 'bolim' item.bolim.pk %}">{{item.bolim}}</a> 
 				  <h5 style="color: red">{{item.myFunk}}</h5>
 				  </div>
 
