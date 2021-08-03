@@ -4,4 +4,6 @@ urlpatterns = [
  
     path('',index, name= 'home'),
     path('bolim/<int:bolim_id>/',get_bolim, name='bolim'),
+    path('libnews/<int:libnews_id>/',view_libnews, name='view_libnews'),
+
 ]

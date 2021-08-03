@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 
 class Obyekt(models.Model):
 	title = models.CharField(max_length=150)
@@ -15,6 +15,9 @@ class Obyekt(models.Model):
 	def __str__(self):
 		return self.title
 
+	def get_absolute_url(self):
+		return reverse('view_libnews', kwargs={'libnews_id':self.pk})
+
 	class Meta:
 		verbose_name = "Kitob"
 		verbose_name_plural = "Kitoblar"
@@ -27,6 +30,10 @@ class Obyekt(models.Model):
 
 class Bolim(models.Model):
 	title = models.CharField(max_length=150,db_index=True,verbose_name='Kategoriya nomi')
+
+	def get_absolute_url(self):
+		return reverse('bolim', kwargs={'bolim_id':self.pk})
+
 
 	def __str__(self):
 		return self.title

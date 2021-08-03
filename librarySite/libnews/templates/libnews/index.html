@@ -20,7 +20,7 @@
 
 				<div class="card mb-3">
 				  <div class="card-header" style="color: blue">
-				   Kategoriya: <a href="{% url 'bolim' item.bolim.pk %}">{{item.bolim}}</a> 
+				   Kategoriya: <a href="{{ item.get_absolute_url }}">{{item.bolim}}</a> 
 				  <h5 style="color: red">{{item.myFunk}}</h5>
 				  </div>
 
@@ -39,7 +39,7 @@
 					  
 					    <p class="card-text">{{item.tavsif}}</p>
 					    
-					    <a href="#" class="btn btn-primary">Read more...</a>
+					    <a href="{{item.get_absolute_url}}" class="btn btn-primary">Read more...</a>
 				    </div>
 				  </div>
 				  <div class="card-footer text-muted">

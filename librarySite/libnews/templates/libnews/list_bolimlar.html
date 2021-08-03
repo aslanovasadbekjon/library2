@@ -1,22 +1,18 @@
-{% load libnews_tags %}	
-		
 
-			{% comment %}
+
 			<div class="col-md-12" style="border: 1px solid red">
 			
 			<div class="col-md-12">
 					<div class="list-group">
+						{{arg1}} {{arg2}}
+
 					    <a href="{% url 'home' %}" class="list-group-item list-group-item-action active" aria-current="true">
 					        Kitoblar kategoriyalari
 					    </a>
-					    {% get_list_bolimlar as bolimlar %}
+					   
 					    {% for item in bolimlar %}
-					    <a href="{% url 'bolim' item.pk %}" class="list-group-item list-group-item-action">{{ item.title }}</a>
+					    <a href="{{ item.get_absolute_url }}" class="list-group-item list-group-item-action">{{ item.title }}</a>
 					    {% endfor %}
 					</div>
 				</div>	
 			</div>
-
-			{% endcomment %}
-			<br>
-			{% show_bolimlar arg2='kitobxon' %}

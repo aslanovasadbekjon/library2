@@ -1,53 +1,52 @@
 {% extends 'base.html' %}
 
 {% block title %}
-{{ bolim.title }} |{{block.super}}
+{{libnews_item.title}} |{{block.super}}
 {% endblock %}
 
 
 
 
-		
+
 					
 			{% block sidebar %}
 			{% include 'inc/_sidebar.html' %}
 			{% endblock %}
 
-
 			{% block content %}
 			<div class="col-md-12" style="background-color: coral">
 				
-				{% for item in libnews %} 
+			
 
 				<div class="card mb-3">
 				  <div class="card-header" style="color: blue">
-				   Kategoriya: <a href="{% url 'bolim' item.bolim.pk %}">{{item.bolim}}</a> 
+				   Kategoriya: <a href="{{ libnews_item.bolim.get_absolute_url }}">{{libnews_item.bolim}}</a> 
 				  <h5 style="color: red">{{item.myFunk}}</h5>
 				  </div>
 
 				  <div class="card-body" style="background-color: #666; color: white; font-family: sans-serif; ">
 				  	<div class="media">
-				  		{% if item.photo %}
-				  		<img src="{{item.photo.url}}" width="80" height="120" alt="libnews_img">
+				  		{% if libnews_item.photo %}
+				  		<img src="{{libnews_item.photo.url}}" width="80" height="120" alt="libnews_img">
 				  		{% endif %}
 
 					    <h5 class="card-title">
-					    	{{ item.title }}
+					    	{{ libnews_item.title }}
 					    </h5>
 					    <h6>
-					    	{{item.aftor}}
+					    	{{libnews_item.aftor}}
 					    </h6>
 					  
-					    <p class="card-text">{{item.tavsif}}</p>
+					    <p class="card-text">{{libnews_item.tavsif}}</p>
 					    
-					    <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Read more...</a>
+					   
 				    </div>
 				  </div>
 				  <div class="card-footer text-muted">
-				    {{item.created_at|date:"d-m-Y H:i"}}
+				    {{libnews_item.created_at|date:"d-m-Y H:i"}}
 				  </div>
 				</div> 
-				{% endfor %}
+				
 			</div>
 			{% endblock %}
 
