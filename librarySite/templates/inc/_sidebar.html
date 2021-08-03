@@ -1,5 +1,5 @@
 {% load libnews_tags %}	
-{% get_bolimlar %}		
+		
 
 			<div class="col-md-12" style="border: 1px solid red">
 			
@@ -8,6 +8,7 @@
 					    <a href="{% url 'home' %}" class="list-group-item list-group-item-action active" aria-current="true">
 					        Kitoblar kategoriyalari
 					    </a>
+					    {% get_bolimlar as bolimlar %}
 					    {% for item in bolimlar %}
 					    <a href="{% url 'bolim' item.pk %}" class="list-group-item list-group-item-action">{{ item.title }}</a>
 					    {% endfor %}
