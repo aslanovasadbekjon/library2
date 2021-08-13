@@ -10,7 +10,7 @@ class Obyekt(models.Model):
 	photo=models.ImageField(upload_to='photos/%Y/%m/%d')
 	is_published = models.BooleanField(default=True)
 
-	bolim = models.ForeignKey('Bolim',on_delete=models.PROTECT, null = True)
+	bolim = models.ForeignKey('Bolim',on_delete=models.PROTECT,)
 
 	def __str__(self):
 		return self.title

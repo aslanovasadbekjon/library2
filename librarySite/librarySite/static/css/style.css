@@ -1,0 +1,12 @@
+body {
+	background-color: #063e9040;
+	background: url("imgs/biblioteka_mnogoiarusnyj_arhitektura_139118_1280x1024.jpg");
+
+}
+.col-md-6{
+	background-color: #fafafa;
+	opacity: 0.9;
+}  
+.errorlist{
+	color: red;
+}
