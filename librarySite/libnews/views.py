@@ -5,16 +5,16 @@ from .forms import ObyektForm
 from .models import Obyekt, Bolim
 from django.views.generic import ListView
 
-def index(request):
-	libnews = Obyekt.objects.all()
-	# bolimlar = Bolim.objects.all()
-	context = { 
-	'libnews':libnews,
-	'title':"Kitoblar olami",
-	# 'bolimlar': bolimlar,
+# def index(request):
+# 	libnews = Obyekt.objects.all()
+# 	# bolimlar = Bolim.objects.all()
+# 	context = { 
+# 	'libnews':libnews,
+# 	'title':"Kitoblar olami",
+# 	# 'bolimlar': bolimlar,
 	
-	}
-	return render(request,template_name= 'libnews/index.html',context=context)
+# 	}
+# 	return render(request,template_name= 'libnews/index.html',context=context)
 
 def get_bolim(request,bolim_id):
 	libnews = Obyekt.objects.filter(bolim_id=bolim_id)
@@ -41,6 +41,21 @@ def add_libnews(request):
 	return render(request, 'libnews/add_libnews.html', {'form':form}) 	
 
 class BoshLibnews(ListView):
+	model = Obyekt
+	template_name = 'libnews/obyekt_list.html'
+	context_object_name = 'libnews'
+	#extra_context = {'title':'Bosh sahifa'} 
+
+	def get_context_data(self,*,obyekt_list=None, **kwargs):
+		context = super().get_context_data(**kwargs)
+		context['title'] = 'Bosh sahifa'
+		return context
+
+	def get_queryset(self):
+		return Obyekt.objects.filter(bolim_id = self.kwargs['bolim_id'],is_published = True)
+
+
+class LibnewsByCategory(ListView):
 	model = Obyekt
 	template_name = 'libnews/obyekt_list.html'
 	context_object_name = 'libnews'
